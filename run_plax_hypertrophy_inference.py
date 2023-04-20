@@ -373,7 +373,7 @@ if __name__ == '__main__':
         else:
             parser.add_argument('--' + k.replace('_', '-'), type=type(v), default=v, help=h)
     args.update({k.replace('-', '_'): v for k, v in vars(parser.parse_args()).items()})
-    get_args = lambda l: {k: args[k][0] for k in l}
+    get_args = lambda l: {k: args[k] for k in l}
 
     # Run inference
     engine = PlaxHypertrophyInferenceEngine(**get_args('device', 'model_path'))
